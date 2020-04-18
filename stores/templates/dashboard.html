@@ -1,0 +1,37 @@
+{% extends 'dashboard_base.html' %}
+{% block nav-content %}
+<div>
+    <h3>
+        See how you are growing..
+    </h3>
+    <canvas id="myChart"></canvas>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script>
+  var labels="{{labels}}";
+  labels=labels.replace(/&quot;/g,'"');
+  labels=JSON.parse(labels);
+  
+  var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'My First dataset',
+            // backgroundColor: 'rgb(250, 99, 132)',
+            backgroundColor: 'blue',
+            borderColor: 'rgb(255, 99, 132)',
+            data: {{data}}
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>
+{% endblock %}

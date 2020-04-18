@@ -1,0 +1,42 @@
+{% extends 'dashboard_base.html' %}
+{% block nav-content %}
+<div>
+    <h3>Your orders</h3>
+    <table class="table table-bordered">
+        <thead>
+            <td>Order ID</td>
+            <td>Time</td>
+            <td>Customer</td>
+            <td>Product details</td>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{order.id}}</td>
+                <td>{{order.timestamp}}{{order.timesince}} </td>
+                <td>{{order.customer.name}}</td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>Product name</td>
+                            <td>Quantity</td>
+                            <td>Price</td>
+                        </tr>
+                    {% for item in order.order_items.all %}
+
+                        <tr>
+                            <td>{{item.product.product_name}} </td>
+                            <td> {{item.quantity}}</td>
+                            <td>{{item.product.price}}</td>
+                        </tr>
+                   
+                    {% endfor %}
+                </table>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'dashboard_base.html' %}
+{% block nav-content %}
+        <div class="b-flex" style="margin-top: 10px;">
+            <br>
+            <button class="btn btn-danger"  data-toggle="modal" data-target="#createStoreModal">Create store</button>
+            <br>
+            <br>
+            <div class="cardsize" style="display: flex; flex-wrap: wrap;">
+
+              {% for store in stores %}
+              
+              <div class="card" style="width: 19rem;margin-right: 10px";>
+                <div class="card-body">
+                  <h5 class="card-title">{{store.name}}</h5>
+                  
+                  <h6 class="card-subtitle mb-2 text-muted">{{store.subtitle}}</h6>
+                  <a href="/edit/store/{{store.id}}" class="btn btn-primary">Edit store</a>
+                  <a href="/store/{{store.slug}}/" class="btn btn-info">Visit store</a>
+                </div>
+              </div>  
+              {% endfor %}
+            </div>
+          </div>
+
+{% endblock %}

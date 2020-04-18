@@ -1,0 +1,27 @@
+{% extends 'dashboard_base.html' %}
+{% block nav-content %}
+<div>
+    <h3>
+        Your customer list
+    </h3>
+    <table class="table table-bordered">
+        <thead>
+            <td>Name</td>
+            <td>Address</td>
+            <td>Email</td>
+            <td>Phone</td>
+        </thead>
+        <tbody>
+            {% for cust in customers %}
+            <tr>
+                <td>{{cust.name}}</td>
+                <td>{{cust.address}}</td>
+                <td>{{cust.email}}</td>
+                <td>{{cust.phone}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

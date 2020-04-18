@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Easysell login</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="container" style="height: 70vh; display:flex; justify-content: center; align-items: center;">
+    <br>
+    <div class="card" style="width: 35rem; border-radius:13px;">
+        <div class="card-body" style="background-color:rgb(243, 203, 92); display:inline;border-radius:13px;">
+
+            <h5 class="card-title" style="font-size:xx-large; color: rgb(12, 12, 12);">Sign In</h5>
+            <form action="/signin/" method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" class="form-control" placeholder="Username">
+                <br>
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                <br>
+                <button type="submit" class="btn btn-primary" style="width: 160px;">Signin</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
